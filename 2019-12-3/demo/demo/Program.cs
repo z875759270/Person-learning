@@ -89,7 +89,7 @@ namespace demo
         }
 
         //对普通方法的重写
-        public void Show()
+        public new void Show()
         {
             Console.WriteLine("这是Student类重写的Show方法");
         }
