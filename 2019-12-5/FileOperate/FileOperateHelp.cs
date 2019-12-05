@@ -1,26 +1,26 @@
 /// <summary>
-/// ÎÄ¼ş²Ù×÷Àà
-/// ÌØ±ğ×¢Òâ£º
-/// 1.ÔÚ·Çweb³ÌĞòÖĞ,HttpContext.Current.Server.MapPathÊ§Ğ§²»ºÃÓÃ,ĞèÒªÊ¹ÓÃSystem.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, strPath);
-///   »ñÈ¡±¾Ä¿Â¼,È»ºóĞ´µ½¸ùÄ¿Â¼Àï¡£AppDomain.CurrentDomain.BaseDirectory½«»ñÈ¡µ½DebugÎÄ¼ş¼Ğ£¬ÎŞ·¨Ê¹ÓÃÏà¶ÔÂ·¾¶
-/// 2.ÔÚweb³ÌĞòÀï,¿ÉÒÔÊ¹ÓÃHttpContext.Current.Server.MapPath½øĞĞ×ª»»£¬Ê¹ÓÃ·½·¨Í¨¹ı ~/¶¨Î»µ½Ò»¼¶Ä¿Â¼£¬eg£ºFileOperateHelp.Write_Txt("~/TestFile/mr.txt", "mr");
+/// æ–‡ä»¶æ“ä½œç±»
+/// ç‰¹åˆ«æ³¨æ„ï¼š
+/// 1.åœ¨éwebç¨‹åºä¸­,HttpContext.Current.Server.MapPathå¤±æ•ˆä¸å¥½ç”¨,éœ€è¦ä½¿ç”¨System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, strPath);
+///   è·å–æœ¬ç›®å½•,ç„¶åå†™åˆ°æ ¹ç›®å½•é‡Œã€‚AppDomain.CurrentDomain.BaseDirectoryå°†è·å–åˆ°Debugæ–‡ä»¶å¤¹ï¼Œæ— æ³•ä½¿ç”¨ç›¸å¯¹è·¯å¾„
+/// 2.åœ¨webç¨‹åºé‡Œ,å¯ä»¥ä½¿ç”¨HttpContext.Current.Server.MapPathè¿›è¡Œè½¬æ¢ï¼Œä½¿ç”¨æ–¹æ³•é€šè¿‡ ~/å®šä½åˆ°ä¸€çº§ç›®å½•ï¼Œegï¼šFileOperateHelp.Write_Txt("~/TestFile/mr.txt", "mr");
 /// </summary>
 public static class FileOperateHelp
 {
-    #region 01.Ğ´ÎÄ¼ş(.txt-¸²¸Ç)
+    #region 01.å†™æ–‡ä»¶(.txt-è¦†ç›–)
     /// <summary>
-    /// Ğ´ÎÄ¼ş(¸²¸ÇÔ´ÎÄ¼şÄÚÈİ)
-    /// ÎÄ¼ş²»´æÔÚµÄ»°×Ô¶¯´´½¨
+    /// å†™æ–‡ä»¶(è¦†ç›–æºæ–‡ä»¶å†…å®¹)
+    /// æ–‡ä»¶ä¸å­˜åœ¨çš„è¯è‡ªåŠ¨åˆ›å»º
     /// </summary>
-    /// <param name="FileName">ÎÄ¼şÂ·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>
-    /// <param name="Content">ÎÄ¼şÄÚÈİ</param>
+    /// <param name="FileName">æ–‡ä»¶è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>
+    /// <param name="Content">æ–‡ä»¶å†…å®¹</param>
     public static string Write_Txt(string FileName, string Content)
     {
         try
         {
             Encoding code = Encoding.GetEncoding("gb2312");
             string htmlfilename = FileOperateHelp.PathConvert(FileName);
-            //string htmlfilename = HttpContext.Current.Server.MapPath(FileName + ".txt");¡¡//±£´æÎÄ¼şµÄÂ·¾¶  
+            //string htmlfilename = HttpContext.Current.Server.MapPath(FileName + ".txt");ã€€//ä¿å­˜æ–‡ä»¶çš„è·¯å¾„  
             string str = Content;
             StreamWriter sw = null;
             {
@@ -45,11 +45,11 @@ public static class FileOperateHelp
     }
     #endregion
 
-    #region 02.¶ÁÎÄ¼ş(.txt)
+    #region 02.è¯»æ–‡ä»¶(.txt)
     /// <summary>
-    /// ¶ÁÎÄ¼ş
+    /// è¯»æ–‡ä»¶
     /// </summary>
-    /// <param name="filename">ÎÄ¼şÂ·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>
+    /// <param name="filename">æ–‡ä»¶è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>
     /// <returns></returns>
     public static string Read_Txt(string filename)
     {
@@ -66,7 +66,7 @@ public static class FileOperateHelp
                 try
                 {
                     sr = new StreamReader(temp, code);
-                    str = sr.ReadToEnd(); // ¶ÁÈ¡ÎÄ¼ş  
+                    str = sr.ReadToEnd(); // è¯»å–æ–‡ä»¶  
                 }
                 catch { }
                 sr.Close();
@@ -86,12 +86,12 @@ public static class FileOperateHelp
     }
     #endregion
 
-    #region 03.Ğ´ÎÄ¼ş£¨.txt-Ìí¼Ó£©
+    #region 03.å†™æ–‡ä»¶ï¼ˆ.txt-è¿½åŠ ï¼‰
     /// <summary>  
-    /// Ğ´ÎÄ¼ş  
+    /// å†™æ–‡ä»¶  
     /// </summary>  
-    /// <param name="FileName">ÎÄ¼şÂ·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>  
-    /// <param name="Strings">ÎÄ¼şÄÚÈİ</param>  
+    /// <param name="FileName">æ–‡ä»¶è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>  
+    /// <param name="Strings">æ–‡ä»¶å†…å®¹</param>  
     public static string WriteFile(string FileName, string Strings)
     {
         try
@@ -118,11 +118,11 @@ public static class FileOperateHelp
     }
     #endregion
 
-    #region 04.¶ÁÎÄ¼ş£¨.txt£©
+    #region 04.è¯»æ–‡ä»¶ï¼ˆ.txtï¼‰
     /// <summary>  
-    /// ¶ÁÎÄ¼ş  
+    /// è¯»æ–‡ä»¶  
     /// </summary>  
-    /// <param name="FileName">ÎÄ¼şÂ·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>  
+    /// <param name="FileName">æ–‡ä»¶è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>  
     /// <returns></returns>  
     public static string ReadFile(string FileName)
     {
@@ -131,7 +131,7 @@ public static class FileOperateHelp
             string Path = FileOperateHelp.PathConvert(FileName);
             string s = "";
             if (!System.IO.File.Exists(Path))
-                s = "²»´æÔÚÏàÓ¦µÄÄ¿Â¼";
+                s = "ä¸å­˜åœ¨ç›¸åº”çš„ç›®å½•";
             else
             {
                 StreamReader f2 = new StreamReader(Path, System.Text.Encoding.GetEncoding("gb2312"));
@@ -148,11 +148,11 @@ public static class FileOperateHelp
     }
     #endregion
 
-    #region 05.É¾³ıÎÄ¼ş
+    #region 05.åˆ é™¤æ–‡ä»¶
     /// <summary>  
-    /// É¾³ıÎÄ¼ş  
+    /// åˆ é™¤æ–‡ä»¶  
     /// </summary>  
-    /// <param name="Path">ÎÄ¼şÂ·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>  
+    /// <param name="Path">æ–‡ä»¶è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>  
     public static string FileDel(string Path)
     {
         try
@@ -168,12 +168,12 @@ public static class FileOperateHelp
     }
     #endregion
 
-    #region 06.ÒÆ¶¯ÎÄ¼ş
+    #region 06.ç§»åŠ¨æ–‡ä»¶
     /// <summary>  
-    /// ÒÆ¶¯ÎÄ¼ş  
+    /// ç§»åŠ¨æ–‡ä»¶  
     /// </summary>  
-    /// <param name="OrignFile">Ô­Ê¼Â·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>  
-    /// <param name="NewFile">ĞÂÂ·¾¶,ĞèÒªĞ´ÉÏÂ·¾¶ÏÂµÄÎÄ¼şÃû£¬²»ÄÜµ¥Ğ´Â·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>  
+    /// <param name="OrignFile">åŸå§‹è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>  
+    /// <param name="NewFile">æ–°è·¯å¾„,éœ€è¦å†™ä¸Šè·¯å¾„ä¸‹çš„æ–‡ä»¶åï¼Œä¸èƒ½å•å†™è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>  
     public static string FileMove(string OrignFile, string NewFile)
     {
         try
@@ -190,12 +190,12 @@ public static class FileOperateHelp
     }
     #endregion
 
-    #region 07.¸´ÖÆÎÄ¼ş
+    #region 07.å¤åˆ¶æ–‡ä»¶
     /// <summary>  
-    /// ¸´ÖÆÎÄ¼ş  
+    /// å¤åˆ¶æ–‡ä»¶  
     /// </summary>  
-    /// <param name="OrignFile">Ô­Ê¼ÎÄ¼ş(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>  
-    /// <param name="NewFile">ĞÂÎÄ¼şÂ·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>  
+    /// <param name="OrignFile">åŸå§‹æ–‡ä»¶(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>  
+    /// <param name="NewFile">æ–°æ–‡ä»¶è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>  
     public static string FileCopy(string OrignFile, string NewFile)
     {
         try
@@ -212,17 +212,17 @@ public static class FileOperateHelp
     }
     #endregion
 
-    #region 08.´´½¨ÎÄ¼ş¼Ğ
+    #region 08.åˆ›å»ºæ–‡ä»¶å¤¹
     /// <summary>  
-    /// ´´½¨ÎÄ¼ş¼Ğ  
+    /// åˆ›å»ºæ–‡ä»¶å¤¹  
     /// </summary>  
-    /// <param name="Path">Ïà¶ÔÂ·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´)</param>  
+    /// <param name="Path">ç›¸å¯¹è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™)</param>  
     public static string FolderCreate(string Path)
     {
         try
         {
             Path = FileOperateHelp.PathConvert(Path);
-            // ÅĞ¶ÏÄ¿±êÄ¿Â¼ÊÇ·ñ´æÔÚÈç¹û²»´æÔÚÔòĞÂ½¨Ö®  
+            // åˆ¤æ–­ç›®æ ‡ç›®å½•æ˜¯å¦å­˜åœ¨å¦‚æœä¸å­˜åœ¨åˆ™æ–°å»ºä¹‹  
             if (!Directory.Exists(Path))
             {
                 Directory.CreateDirectory(Path);
@@ -236,11 +236,11 @@ public static class FileOperateHelp
     }
     #endregion
 
-    #region 09.µİ¹éÉ¾³ıÎÄ¼ş¼ĞÄ¿Â¼¼°ÎÄ¼ş
+    #region 09.é€’å½’åˆ é™¤æ–‡ä»¶å¤¹ç›®å½•åŠæ–‡ä»¶
     /// <summary>  
-    /// µİ¹éÉ¾³ıÎÄ¼ş¼ĞÄ¿Â¼¼°ÎÄ¼ş  
+    /// é€’å½’åˆ é™¤æ–‡ä»¶å¤¹ç›®å½•åŠæ–‡ä»¶  
     /// </summary>  
-    /// <param name="dir">Ïà¶ÔÂ·¾¶(webÀïÏà¶ÔÂ·¾¶,¿ØÖÆÌ¨ÔÚ¸ùÄ¿Â¼ÏÂĞ´) ½ØÖ¹µ½ÄÄÉ¾³ıµ½ÄÄ£¬eg£º/a/ Á¬aÒ²É¾³ı</param>    
+    /// <param name="dir">ç›¸å¯¹è·¯å¾„(webé‡Œç›¸å¯¹è·¯å¾„,æ§åˆ¶å°åœ¨æ ¹ç›®å½•ä¸‹å†™) æˆªæ­¢åˆ°å“ªåˆ é™¤åˆ°å“ªï¼Œegï¼š/a/ è¿aä¹Ÿåˆ é™¤</param>    
     /// <returns></returns>  
     public static string DeleteFolder(string dir)
     {
@@ -248,16 +248,16 @@ public static class FileOperateHelp
         try
         {
             string adir = FileOperateHelp.PathConvert(dir);
-            if (Directory.Exists(adir)) //Èç¹û´æÔÚÕâ¸öÎÄ¼ş¼ĞÉ¾³ıÖ®   
+            if (Directory.Exists(adir)) //å¦‚æœå­˜åœ¨è¿™ä¸ªæ–‡ä»¶å¤¹åˆ é™¤ä¹‹   
             {
                 foreach (string d in Directory.GetFileSystemEntries(adir))
                 {
                     if (File.Exists(d))
-                        File.Delete(d); //Ö±½ÓÉ¾³ıÆäÖĞµÄÎÄ¼ş                          
+                        File.Delete(d); //ç›´æ¥åˆ é™¤å…¶ä¸­çš„æ–‡ä»¶                          
                     else
-                        DeleteFolder(d); //µİ¹éÉ¾³ı×ÓÎÄ¼ş¼Ğ   
+                        DeleteFolder(d); //é€’å½’åˆ é™¤å­æ–‡ä»¶å¤¹   
                 }
-                Directory.Delete(adir, true); //É¾³ıÒÑ¿ÕÎÄ¼ş¼Ğ                   
+                Directory.Delete(adir, true); //åˆ é™¤å·²ç©ºæ–‡ä»¶å¤¹                   
             }
             return "ok";
         }
@@ -269,19 +269,19 @@ public static class FileOperateHelp
 
     #endregion
 
-    #region 10.½«Ïà¶ÔÂ·¾¶×ª»»³É¾ø¶ÔÂ·¾¶
+    #region 10.å°†ç›¸å¯¹è·¯å¾„è½¬æ¢æˆç»å¯¹è·¯å¾„
     /// <summary>
-    /// 10.½«Ïà¶ÔÂ·¾¶×ª»»³É¾ø¶ÔÂ·¾¶
+    /// 10.å°†ç›¸å¯¹è·¯å¾„è½¬æ¢æˆç»å¯¹è·¯å¾„
     /// </summary>
-    /// <param name="strPath">Ïà¶ÔÂ·¾¶</param>
+    /// <param name="strPath">ç›¸å¯¹è·¯å¾„</param>
     public static string PathConvert(string strPath)
     {
-        //web³ÌĞòÊ¹ÓÃ
+        //webç¨‹åºä½¿ç”¨
         if (HttpContext.Current != null)
         {
             return HttpContext.Current.Server.MapPath(strPath);
         }
-        else //·Çweb³ÌĞòÒıÓÃ             
+        else //éwebç¨‹åºå¼•ç”¨             
         {
             strPath = strPath.Replace("/", "\\");
             if (strPath.StartsWith("\\"))
