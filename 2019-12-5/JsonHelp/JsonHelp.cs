@@ -1,5 +1,6 @@
-
-
+///<summer>
+///Json序列化和反序列化工具类
+///<summer>
 public class JsonHelp
 {
     #region 01-将JSON转换成JSON字符串
